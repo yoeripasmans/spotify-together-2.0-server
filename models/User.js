@@ -1,8 +1,7 @@
 const mongoose = require('mongoose');
 const findOrCreate = require('mongoose-findorcreate');
 
-// create a schema
-var userSchema = new mongoose.Schema({
+const userSchema = new mongoose.Schema({
    spotifyId: String,
    displayName: String,
    username: String,

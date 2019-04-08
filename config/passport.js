@@ -2,14 +2,15 @@ const passport = require('passport');
 const SpotifyStrategy = require('passport-spotify').Strategy;
 const User = require('./../models/User');
 
-module.exports = () => {
   passport.serializeUser((user, done) => {
-    done(null, user);
+    done(null, user._id);
   });
 
-  passport.deserializeUser((obj, done) => {
-    done(null, obj);
-  });
+  passport.deserializeUser((id, done) => {
+		User.findById(id, (err, user) => {
+			done(err, user);
+		});
+	});
 
   passport.use(
     new SpotifyStrategy(
@@ -25,4 +26,3 @@ module.exports = () => {
       }
     )
   );
-};
