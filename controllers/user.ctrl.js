@@ -5,7 +5,7 @@ module.exports = {
     User.findById(req.user.id, (err, user) => {
       res.json(user);
     }).catch((err) => {
-      res.json(err)
+      res.send(404)
     });;
   },
 };
