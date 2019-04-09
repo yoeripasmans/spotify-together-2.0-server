@@ -17,7 +17,7 @@ const User = require('./../models/User');
       {
         clientID: process.env.CLIENT_ID,
         clientSecret: process.env.CLIENT_SECRET,
-        callbackURL: 'http://localhost:3001/callback',
+        callbackURL: process.env.REDIRECT_URI,
       },
       (accessToken, refreshToken, expires_in, profile, done) => {
         User.findOrCreate({ spotifyId: profile.id }, (err, user) => {
