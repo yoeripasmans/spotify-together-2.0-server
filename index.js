@@ -1,5 +1,4 @@
 require('dotenv').config();
-require('./config/passport.js');
 const express = require('express');
 const session = require('express-session');
 const mongoose = require('mongoose');
@@ -36,10 +35,7 @@ app.use(session({
 app.use(passport.initialize());
 app.use(passport.session());
 
-app.use('/', routes);
-
-io.on('connection', (socket) => {
-});
+app.use('/', routes(io));
 
 server.listen(port, () => {
   console.info(`Listening on port ${port}`);

@@ -1,3 +1,4 @@
+require('../config/passport.js');
 const passport = require('passport');
 
 module.exports = (router) => {
