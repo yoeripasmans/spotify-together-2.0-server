@@ -1,15 +1,18 @@
 {
-  "name": "spotify-together-2.0-server",
+  "name": "spotify-together-api",
   "version": "1.0.0",
   "main": "index.js",
   "scripts": {
-    "start": "node index.js",
-    "start-dev": "nodemon index.js"
+    "start": "node src/index.js",
+    "start-dev": "nodemon src/index.js",
+    "build": "webpack --config webpack.config.js",
+    "server": "node dist/bundle.js"
   },
   "author": "",
   "license": "ISC",
   "description": "",
   "dependencies": {
+    "@labela/deploy": "^0.9.1",
     "compression": "^1.7.3",
     "connect-mongo": "^2.0.3",
     "cookie-parser": "^1.4.4",
@@ -23,5 +26,9 @@
     "passport-spotify": "^1.0.1",
     "socket.io": "^2.2.0",
     "spotify-web-api-node": "^4.0.0"
+  },
+  "devDependencies": {
+    "webpack": "^4.30.0",
+    "webpack-cli": "^3.3.1"
   }
 }
