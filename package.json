@@ -5,8 +5,8 @@
   "scripts": {
     "start": "node src/index.js",
     "start-dev": "nodemon src/index.js",
-    "build": "webpack --config webpack.config.js",
-    "server": "node dist/bundle.js"
+    "build": "webpack --config config/webpack.config.js",
+    "server": "node dist/server.js"
   },
   "author": "",
   "license": "ISC",
@@ -29,6 +29,7 @@
   },
   "devDependencies": {
     "webpack": "^4.30.0",
-    "webpack-cli": "^3.3.1"
+    "webpack-cli": "^3.3.1",
+    "webpack-node-externals": "^1.7.2"
   }
 }
