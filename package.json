@@ -4,9 +4,9 @@
   "main": "index.js",
   "scripts": {
     "start": "node src/index.js",
-    "start-dev": "nodemon src/index.js",
+    "start-dev": "APP_ENV=dev nodemon src/index.js",
     "build": "webpack --config config/webpack.config.js",
-    "server": "node dist/server.js"
+    "server": "APP_ENV=dev node dist/server.js"
   },
   "author": "",
   "license": "ISC",

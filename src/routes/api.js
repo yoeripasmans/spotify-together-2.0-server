@@ -26,7 +26,6 @@ module.exports = (router, io) => {
 
    socket.on('join', (room) => {
      socket.join(room);
-     console.log(socket.id + 'joined room' + room);
    });
 
   });

@@ -35,7 +35,7 @@ if [ -z "$PROD_PORT" ]; then
 fi
 
 if [ -z "$PM2_CONFIG_NAME" ]; then
-   PM2_CONFIG_NAME=pm2-server.json
+   PM2_CONFIG_NAME=$PROJECT-pm2-config.json
 fi
 
 #Environment switch
@@ -122,11 +122,11 @@ APP_ENV=$APP_ENV npm run build
 
 #Create PM2 config file
 echo -e ":zap: $c Generating PM2 server file $nc"
-sed "s/USER/$USER/g; s/PROJECT/$PROJECT/g; s/INSTANCES/$INSTANCES/g" ./pm2-template-server.json > $PM2_CONFIG_NAME
+sed "s/USER/$USER/g; s/PROJECT/$PROJECT/g; s/INSTANCES/$INSTANCES/g" ./config/pm2-template-server.json > $PM2_CONFIG_NAME
 
 #Build tar and copy to server
 echo -e ":truck: $c Copying files to server $nc"
-tar -czf $FILENAME ./dist ./package.json ./package-lock.json ./tsconfig-paths-bootstrap.js ./tsconfig.json ./$PM2_CONFIG_NAME
+tar -czf $FILENAME ./dist ./package.json ./package-lock.json .env.$APP_ENV ./$PM2_CONFIG_NAME
 scp -r ./$FILENAME $ROOT_USER@$HOST:~
 rm ./$FILENAME
 rm ./$PM2_CONFIG_NAME
@@ -149,9 +149,9 @@ ssh $ROOT_USER@$HOST << EOF
    ln -n -f -s $PDIR-$VERSION $PDIR;
    echo -e ":zap: $c Installing packages $nc"
    npm install --production --prefix $PDIR-$VERSION;
-   mv $PDIR-$VERSION/$PM2_CONFIG_NAME /home/$USER/www/
    echo -e ":house_with_garden: $c Starting server $nc"
-   NODE_ENV=production PORT=$PORT pm2 start $PDIR-$VERSION/$PM2_CONFIG_NAME;
+   mv $PDIR-$VERSION/$PM2_CONFIG_NAME /home/$USER/www/
+   APP_ENV=$APP_ENV NODE_ENV=production PORT=$PORT pm2 start /home/$USER/www/$PM2_CONFIG_NAME;
 EOF
 
 if [ $? -eq 0 ]; then

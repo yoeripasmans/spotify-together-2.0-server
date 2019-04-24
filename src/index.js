@@ -1,4 +1,7 @@
-require('dotenv').config();
+require('dotenv').config({
+  path: `.env.${process.env.APP_ENV}`
+});
+
 const express = require('express');
 const session = require('express-session');
 const mongoose = require('mongoose');
@@ -14,8 +17,11 @@ const routes = require('./routes');
 const port = process.env.PORT || 3001;
 
 mongoose.connect(process.env.dbURI, { useNewUrlParser: true });
+console.log(process.env.CORS_URL);
+app.use(cors({credentials: true, origin: process.env.CORS_URL }));
 
-app.use(cors({credentials: true, origin: 'http://localhost:3000'}));
+io.set('transports', ['websocket']);
+
 app.use(compress());
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
