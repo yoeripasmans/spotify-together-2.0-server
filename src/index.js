@@ -12,14 +12,12 @@ const MongoStore = require('connect-mongo')(session);
 const passport = require('passport');
 const app = express();
 const server = require('http').Server(app);
-const io = require('socket.io')(server);
+
 const routes = require('./routes');
 const port = process.env.PORT || 3001;
 
-mongoose.connect(process.env.dbURI, { useNewUrlParser: true });
+mongoose.connect(process.env.dbURI, { useNewUrlParser: true, useFindAndModify: false });
 app.use(cors({credentials: true, origin: process.env.CORS_URL }));
-
-io.set('transports', ['websocket']);
 
 app.use(compress());
 app.use(express.json());
@@ -40,8 +38,10 @@ app.use(session({
 app.use(passport.initialize());
 app.use(passport.session());
 
-app.use('/', routes(io));
+app.use('/', routes());
 
 server.listen(port, () => {
   console.info(`Listening on port ${port}`);
 });
+
+const io = require('./sockets').listen(server);
