@@ -21,12 +21,15 @@ module.exports = (router, io) => {
 
   io.on('connection', (socket) => {
     socket.on('USER_CONNECTED', (data) => {
-     console.log(data);
    });
 
    socket.on('join', (room) => {
      socket.join(room);
+     io.to(room).emit('USER_CONNECTED_TO_PLAYLIST');
+     console.log(room);
    });
+
+
 
   });
 };

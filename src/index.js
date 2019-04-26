@@ -17,7 +17,6 @@ const routes = require('./routes');
 const port = process.env.PORT || 3001;
 
 mongoose.connect(process.env.dbURI, { useNewUrlParser: true });
-console.log(process.env.CORS_URL);
 app.use(cors({credentials: true, origin: process.env.CORS_URL }));
 
 io.set('transports', ['websocket']);
