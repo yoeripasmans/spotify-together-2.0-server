@@ -3,16 +3,16 @@ require('dotenv').config({
 });
 
 const express = require('express');
+const app = express();
+const server = require('http').Server(app);
+const io = require('./sockets').listen(server);
 const session = require('express-session');
 const mongoose = require('mongoose');
+const MongoStore = require('connect-mongo')(session);
 const compress = require('compression');
 const cors = require('cors');
 const cookieParser = require('cookie-parser');
-const MongoStore = require('connect-mongo')(session);
 const passport = require('passport');
-const app = express();
-const server = require('http').Server(app);
-
 const routes = require('./routes');
 const port = process.env.PORT || 3001;
 
@@ -43,5 +43,3 @@ app.use('/', routes());
 server.listen(port, () => {
   console.info(`Listening on port ${port}`);
 });
-
-const io = require('./sockets').listen(server);

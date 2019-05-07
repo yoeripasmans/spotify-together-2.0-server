@@ -1,7 +1,7 @@
 const socketio = require('socket.io');
 
 module.exports.listen = (app) => {
-  io = socketio.listen(app);
+  const io = socketio.listen(app);
   io.set('transports', ['websocket']);
   io.on('connection', (socket) => {
 
@@ -10,5 +10,6 @@ module.exports.listen = (app) => {
     });
 
     require('./joinPlaylist')(socket, io);
+    require('./leavePlaylist')(socket, io);
   });
 }

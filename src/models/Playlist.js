@@ -31,7 +31,6 @@ const playlistSchema = new mongoose.Schema({
     rules: Object,
     qrCodeId: String,
     isPlaying: Boolean,
-
 }, {
     timestamps: true,
 });
