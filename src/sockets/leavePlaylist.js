@@ -24,6 +24,6 @@ module.exports = (socket, io) => {
 
     });
 
-    console.log(userObject.displayName + ' leaved ' + playlistId);
+    console.log(userObject.displayName + ' leaved ' + playlistData.name);
   });
 }

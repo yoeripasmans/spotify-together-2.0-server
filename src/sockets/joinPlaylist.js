@@ -25,9 +25,9 @@ module.exports = (socket, io) => {
               console.log("Something wrong when getting the data!");
             }
             socket.join(playlistId);
-            console.log(userData.displayName + ' joined ' + playlistId);
+            console.log(userData.displayName + ' joined ' + playlistData.name);
             io.to(playlistId).emit('USER_JOIN_PLAYLIST', doc);
-        });  
+        });
     });
   });
 }

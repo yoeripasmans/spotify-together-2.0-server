@@ -5,8 +5,10 @@ module.exports.listen = (app) => {
   io.set('transports', ['websocket']);
   io.on('connection', (socket) => {
 
-    socket.on('USER_CONNECTED', (userData) => {
-      console.log(userData.spotifyId,'connected');
+    console.log('socket connected');
+
+    socket.on('disconnect', () => {
+       console.log('user disconnected');
     });
 
     require('./joinPlaylist')(socket, io);
