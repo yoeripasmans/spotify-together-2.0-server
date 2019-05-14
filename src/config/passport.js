@@ -19,8 +19,8 @@ const strategy = new SpotifyStrategy({
     callbackURL: process.env.REDIRECT_URI,
   },
   (accessToken, refreshToken, expires_in, profile, done) => {
-    User.findOrCreate({
-      spotifyId: profile.id,
+    User.findOrCreate({ spotifyId: profile.id },
+    {
       displayName: profile.displayName,
       username: profile.username,
       email: profile.emails[0].value,
@@ -31,7 +31,8 @@ const strategy = new SpotifyStrategy({
       product: profile.product,
       accessToken: accessToken,
       refreshToken: refreshToken,
-    }, (err, user) => {
+    },
+    (err, user) => {
       return done(err, user);
     });
   }
