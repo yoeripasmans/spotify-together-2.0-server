@@ -2,16 +2,17 @@ const mongoose = require('mongoose');
 const findOrCreate = require('mongoose-findorcreate');
 
 const userSchema = new mongoose.Schema({
-   spotifyId: String,
-   displayName: String,
-   username: String,
-   email: String,
-   images: Object,
-   accessToken: String,
-   profilePic: String,
-   refreshToken: String,
-   birthdate: Date,
-   country: String,
+  spotifyId: String,
+  displayName: String,
+  username: String,
+  email: String,
+  profilePic: String,
+  country: String,
+  followers: Number,
+  birthdate: Date,
+  product: String,
+  accessToken: String,
+  refreshToken: String,
 });
 
 userSchema.plugin(findOrCreate);
