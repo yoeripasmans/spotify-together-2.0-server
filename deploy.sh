@@ -3,6 +3,10 @@ PROJECT=spotify-together-api
 
 TEST_PORT=2028
 
+ACC_HOST=149.202.216.168
+ACC_USER=spotify
+ACC_PORT=2029
+
 #Don't touch this
 ENV=$1
 

@@ -1,37 +1,40 @@
 {
-  "name": "spotify-together-api",
-  "version": "1.0.0",
-  "main": "index.js",
-  "scripts": {
-    "start": "node src/index.js",
-    "start-dev": "APP_ENV=dev nodemon src/index.js",
-    "build": "webpack --config config/webpack.config.js",
-    "server": "APP_ENV=dev node dist/server.js"
-  },
-  "author": "",
-  "license": "ISC",
-  "description": "",
-  "dependencies": {
-    "@labela/deploy": "^0.9.1",
-    "compression": "^1.7.3",
-    "connect-mongo": "^2.0.3",
-    "cookie-parser": "^1.4.4",
-    "cors": "^2.8.5",
-    "dotenv": "^7.0.0",
-    "express": "^4.16.4",
-    "express-session": "^1.15.6",
-    "isomorphic-fetch": "^2.2.1",
-    "mongoose": "^5.4.20",
-    "mongoose-findorcreate": "^3.0.0",
-    "passport": "^0.4.0",
-    "passport-oauth2-refresh": "^1.1.0",
-    "passport-spotify": "^1.0.1",
-    "socket.io": "^2.2.0",
-    "spotify-web-api-node": "^4.0.0"
-  },
-  "devDependencies": {
-    "webpack": "^4.30.0",
-    "webpack-cli": "^3.3.1",
-    "webpack-node-externals": "^1.7.2"
-  }
+    "name": "spotify-together-api",
+    "version": "1.0.0",
+    "main": "index.js",
+    "scripts": {
+        "start": "node src/index.js",
+        "start-dev": "APP_ENV=dev nodemon src/index.js",
+        "build": "webpack --config config/webpack.config.js",
+        "server": "APP_ENV=dev node dist/server.js"
+    },
+    "engines": {
+        "node": "8.11.1"
+    },
+    "author": "",
+    "license": "ISC",
+    "description": "",
+    "dependencies": {
+        "@labela/deploy": "^0.9.1",
+        "compression": "^1.7.3",
+        "connect-mongo": "^2.0.3",
+        "cookie-parser": "^1.4.4",
+        "cors": "^2.8.5",
+        "dotenv": "^7.0.0",
+        "express": "^4.16.4",
+        "express-session": "^1.15.6",
+        "isomorphic-fetch": "^2.2.1",
+        "mongoose": "^5.4.20",
+        "mongoose-findorcreate": "^3.0.0",
+        "passport": "^0.4.0",
+        "passport-oauth2-refresh": "^1.1.0",
+        "passport-spotify": "^1.0.1",
+        "socket.io": "^2.2.0",
+        "spotify-web-api-node": "^4.0.0"
+    },
+    "devDependencies": {
+        "webpack": "^4.30.0",
+        "webpack-cli": "^3.3.1",
+        "webpack-node-externals": "^1.7.2"
+    }
 }
