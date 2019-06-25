@@ -15,7 +15,6 @@
     "license": "ISC",
     "description": "",
     "dependencies": {
-        "@labela/deploy": "^0.9.1",
         "compression": "^1.7.3",
         "connect-mongo": "^2.0.3",
         "cookie-parser": "^1.4.4",
